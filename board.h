@@ -9,6 +9,6 @@ int board_getBoardCoin(int); // 동전 습득 명령
 int board_printBoardStatus(void); //전체 보드 상태 출력 
 
 //int board_getSharkPosition(void); // 상어의 위치 출력 
-//int board_stepShark(void); //상어 전진 명령 
+int board_stepShark(void); //상어 전진 명령 
 
 

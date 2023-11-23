@@ -7,6 +7,9 @@
 #define MAX_COIN		 4	
 #include "board.h"
 
+#define MAX_SHARKSTEP 	6
+#define SHARK_INITPOS	-4
+
 static int board_status[N_BOARD]; //보드의 생존 여부
 static int board_coin[N_BOARD];
 
@@ -20,6 +23,9 @@ int board_initBoard(void) //보드 초기화
 		board_status[i]=BOARDSTATUS_OK;
 		board_coin[i]=0;
 	}
+	
+	board_sharkPosition=SHARK_INITPOS; 
+	
 	for(i=0;i<N_COINPOS;i++)
 	{
 		int flag=0; // 깃발 변수 이용 
@@ -64,8 +70,19 @@ int board_getBoardStatus(int pos) // 특정 칸의 파손여부 출력
 {
 	return board_status[pos];
 }
-/*
+
 int board_getSharkPosition(void); // 상어의 위치 출력 
 
-int board_stepShark(void); //상어 전진 명령 
-*/
+int board_stepShark(void) //상어 전진 명령 
+{
+	int step = rand()%MAX_SHARKSTEP+1;
+	
+	int i;
+	for(i=+1;i<=board_sharkPosition+step;i++)
+	{
+		if(i>=0&& i< N_BOARD)
+		board_status[i]= BOARDSTATUS_NOK;
+	}
+	board_sharkPosition += step;
+	return board_sharkPosition;
+}

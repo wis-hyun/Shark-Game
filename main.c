@@ -87,7 +87,7 @@ int getAlivePlayer(void)
 	int cnt=0;
 	for(i=0; i<N_PLAYER; i++)
 	{
-		if(player_status[i]==PLAYERSTATUS_END)
+		if(player_status[i]==PLAYERSTATUS_LIVE)
 			cnt++;
 	}
 	return cnt;
@@ -145,15 +145,8 @@ int main(int argc, char *argv[]) {
 		for(i=0;i<N_PLAYER;i++)
 			printPlayerPosition(i);	
 		printPlayerStatus();
-		
-		/*
-		board_printBoardStatus();
-		pos += step;
-		coinResult = board_getBoardCoin(pos);
-		printf("press any key to continue : ");
-		scanf("%d", &c);
-		fflush(stdin);
-		*/
+	
+	
 		//2-2. 주사위 던지기
 		printf("%s turn!",player_name[turn]);
 		printf("press any key to roll a die!\n");
